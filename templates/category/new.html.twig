@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Category{% endblock %}
+
+{% block body %}
+
+    <div class="container new-Category">
+
+       {{ form_start(form) }}
+        {{ form_row(form.name) }}
+        <button type="submit">Valider</button>
+       {{ form_end(form) }}
+
+    </div>
+
+{% endblock %}

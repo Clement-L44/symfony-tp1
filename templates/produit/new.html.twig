@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Produits{% endblock %}
+
+{% block body %}
+
+    <div class="container new-produit">
+
+       {{ form_start(form) }}
+        {{ form_row(form.title) }}
+        {{ form_row(form.description) }}
+        {{ form_row(form.price) }}
+        {{ form_row(form.categories) }}
+        <button type="submit">Valider</button>
+       {{ form_end(form) }}
+
+    </div>
+
+{% endblock %}

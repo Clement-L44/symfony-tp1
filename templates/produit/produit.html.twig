@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Update Produits{% endblock %}
+
+{% block body %}
+
+    <div class="container update-produit">
+
+       {{ form_start(form) }}
+        {{ form_row(form.title) }}
+        {{ form_row(form.description) }}
+        {{ form_row(form.price) }}
+        {{ form_row(form.categories) }}
+        <button type="submit">Valider</button>
+       {{ form_end(form) }}
+
+       <a href="{{ path('app_produit_remove', {'id': id }) }}">Supprimer</a>
+
+    </div>
+
+{% endblock %}
