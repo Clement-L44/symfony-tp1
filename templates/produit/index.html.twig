@@ -12,11 +12,9 @@
             <p>{{ produit.description }}</p>
             <h2>{{ produit.price }}</h2>
             
-            {% for category in produit.categories %}
-                <ul>
-                    <li><a href="{{ path('app_category_update', {'id': category.id}) }}">{{ category.name }}</a></li>
-                </ul>
-            {% endfor %}
+            {% if produit.category is not null %}
+                <a href="{{ path('app_category_update', {'id': produit.category.id}) }}">{{ produit.category.name }}</a>
+            {% endif %}
 
             <a href="{{ path('app_produit_update', {'id': produit.id}) }}">Modifier</a>
 

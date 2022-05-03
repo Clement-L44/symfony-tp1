@@ -74,8 +74,8 @@ class CategoryController extends AbstractController
     {
         $em = $doctrine->getManager();
         $category = $categoryRepository->find($id);
-        foreach($category->getProduit() as $produit){
-            $produit->removeCategory($category);
+        foreach($category->getProduits() as $produit){
+            $category->removeProduit($produit);
             $em->persist($produit);
             $em->flush();
         }

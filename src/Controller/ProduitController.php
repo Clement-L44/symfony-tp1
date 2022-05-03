@@ -33,14 +33,9 @@ class ProduitController extends AbstractController
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()){
+            //dd($produit);
             $em = $doctrine->getManager();
-
-            foreach($produit->getCategories()->getValues() as $category){
-                $produit->addCategory($category);
-                $category->addProduit($produit);
-            }
             $em->persist($produit);
-            $em->persist($category);
             $em->flush();
             return $this->redirectToRoute('app_produit');
         }
@@ -61,12 +56,6 @@ class ProduitController extends AbstractController
         if($form->isSubmitted() && $form->isValid()){
             $em = $doctrine->getManager();
 
-            foreach($produit->getCategories()->getValues() as $category){
-                $produit->addCategory($category);
-                $category->addProduit($produit);
-            }
-
-            $em->persist($category);
             $em->persist($produit);
             $em->flush();
 

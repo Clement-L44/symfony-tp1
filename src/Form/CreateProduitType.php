@@ -26,11 +26,10 @@ class CreateProduitType extends AbstractType
             ->add('price', NumberType::class, [
                 'label' => "Prix"
             ])
-            ->add('categories', EntityType::class, [
-                'label' => 'Cateogory :',
+            ->add('category', EntityType::class, [
+                'label' => 'Category :',
                 'class' => Category::class,
                 'choice_label' => 'name',
-                'multiple' => true,
             ])
         ;
     }

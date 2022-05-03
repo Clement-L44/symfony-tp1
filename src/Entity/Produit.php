@@ -24,12 +24,13 @@ class Produit
     #[ORM\Column(type: 'float')]
     private $price;
 
-    #[ORM\ManyToMany(targetEntity: Category::class, mappedBy: 'Produit')]
-    private $categories;
+    #[ORM\ManyToOne(targetEntity: Category::class, inversedBy: 'produits')]
+    private $category;
 
     public function __construct()
     {
         $this->categories = new ArrayCollection();
+        $this->produits = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -73,30 +74,16 @@ class Produit
         return $this;
     }
 
-    /**
-     * @return Collection<int, Category>
-     */
-    public function getCategories(): Collection
+    public function getCategory(): ?Category
     {
-        return $this->categories;
+        return $this->category;
     }
 
-    public function addCategory(Category $category): self
+    public function setCategory(?Category $category): self
     {
-        if (!$this->categories->contains($category)) {
-            $this->categories[] = $category;
-            $category->addProduit($this);
-        }
+        $this->category = $category;
 
         return $this;
     }
 
-    public function removeCategory(Category $category): self
-    {
-        if ($this->categories->removeElement($category)) {
-            $category->removeProduit($this);
-        }
-
-        return $this;
-    }
 }
