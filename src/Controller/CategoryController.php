@@ -77,8 +77,11 @@ class CategoryController extends AbstractController
         foreach($category->getProduits() as $produit){
             $category->removeProduit($produit);
             $em->persist($produit);
+            /* onDelete Cascade Symfony 6 ?? */
+            $em->remove($produit);
             $em->flush();
         }
+
         $em->remove($category);
         $em->flush();
 
